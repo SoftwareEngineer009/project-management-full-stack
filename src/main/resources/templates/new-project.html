@@ -75,7 +75,7 @@
 
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
-                    <select class="form-select" id="status" name="status" required th:field="${project.stage}>
+                    <select class="form-select" id="status" name="status" required th:field="${project.stage}">
                         <option th:value="NOTSTARTED">Not Started</option>
                         <option th:value="INPROGRESS">In Progress</option>
                         <option th:value="COMPLETED">Completed</option>
@@ -84,7 +84,7 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Project Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your project here..." required th:field="${project.description}></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your project here..." required th:field="${project.description}"></textarea>
                 </div>
 
                 <div class="d-grid">

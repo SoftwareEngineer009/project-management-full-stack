@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layouts :: header"></head>
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+<section class="hero text-center py-5 animate__animated animate__fadeIn">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Manage Projects with Clarity & Confidence</h1>
+        <p class="lead mt-3 mb-4">Your all-in-one platform to organize, track, and deliver projects seamlessly.</p>
+        <a href="#projects-section" class="btn btn-glow btn-lg">View Projects</a>
+    </div>
+</section>
+<section class="features text-center py-5 bg-light">
+    <div class="container">
+        <h2 class="fw-bold mb-5">Why Choose ProjectFlow?</h2>
+        <div class="row g-4">
+            <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="feature-icon mb-3">📁</div>
+                <h5>Organize</h5>
+                <p>Group projects by stages and keep your data structured and accessible.</p>
+            </div>
+            <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="feature-icon mb-3">📈</div>
+                <h5>Track Progress</h5>
+                <p>Visualize your workflow with real-time project statuses and updates.</p>
+            </div>
+            <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="feature-icon mb-3">🤝</div>
+                <h5>Team Collaboration</h5>
+                <p>Assign employees and collaborate across tasks with ease.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="table-section py-5">
+    <div class="container">
+        <div id="projects-section" class="table-card mb-5 animate__animated animate__fadeInUp">
+            <h4 class="fw-bold mb-4 text-center">📌 Current Projects</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center align-middle">
+                    <thead>
+                    <tr><th>Project Name</th><th>Project Stage</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="aProject : ${projectsList}">
+                        <td th:text="${aProject.name}"></td>
+                        <td th:text="${aProject.stage}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="table-card animate__animated animate__fadeInUp animate__delay-1s">
+            <h4 class="fw-bold mb-4 text-center">👥 Current Employees</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center align-middle">
+                    <thead>
+                    <tr><th>First Name</th><th>Last Name</th><th>Email Address</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="aEmployee : ${employeesList}">
+                        <td th:text="${aEmployee.firstName}"></td>
+                        <td th:text="${aEmployee.lastName}"></td>
+                        <td th:text="${aEmployee.email}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer mt-auto">
+    <div class="container">
+        <p>&copy; 2025 ProjectFlow. Built with ❤️ and Spring Boot.</p>
+    </div>
+</footer>
+</body>
+</html>

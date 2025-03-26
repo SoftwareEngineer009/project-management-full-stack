@@ -11,11 +11,12 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long projectId;
+
     private String name;
     private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
     private String description;
 
-    @OneToMany(mappedBy = "theProject")
+    @OneToMany(mappedBy = "project")
     private List<Employee> employees;
 
     public Project() {
@@ -26,6 +27,14 @@ public class Project {
         this.name = name;
         this.stage = stage;
         this.description = description;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public long getProjectId() {

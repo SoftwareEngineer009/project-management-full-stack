@@ -26,6 +26,9 @@
                     <label for="description" class="form-label">Project Description</label>
                     <textarea class="form-control" id="description" name="description" rows="4" required th:field="${project.description}"></textarea>
                 </div>
+                <select th:field="*{employees}" multiple = "multiple">
+                    <option th:each="employee : ${allEmployees}" th:value="${employee.employeeId}" th:text="${employee.firstName}"></option>
+                </select>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary btn-lg">Create Project</button>
                 </div>

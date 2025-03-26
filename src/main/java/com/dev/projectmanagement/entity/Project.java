@@ -1,10 +1,9 @@
 package com.dev.projectmanagement.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Project {
@@ -12,9 +11,20 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long projectId;
+
     private String name;
     private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
     private String description;
+
+    @ManyToMany(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.PERSIST},
+            fetch = FetchType.LAZY)
+    @JoinTable(name = "project_employee",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
+    private List<Employee> employees;
 
     public Project() {
 
@@ -24,6 +34,14 @@ public class Project {
         this.name = name;
         this.stage = stage;
         this.description = description;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public long getProjectId() {

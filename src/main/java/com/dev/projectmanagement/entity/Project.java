@@ -3,6 +3,7 @@ package com.dev.projectmanagement.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -74,5 +75,12 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void addEmployee(Employee employee) {
+        if(employees == null) {
+            employees = new ArrayList<>();
+        }
+        employees.add(employee);
     }
 }
